@@ -20,7 +20,7 @@ app.use(cors({
 mongoose.connect(MONGO_URI).then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
-  app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+  app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 app.use(express.json());
 app.use(session({
   secret: 'secret',

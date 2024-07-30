@@ -21,7 +21,7 @@ const auth_middleware_1 = require("../middleware/auth-middleware");
 const router = (0, express_1.Router)();
 const storage = multer_1.default.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, "./src/uploads/");
+        cb(null, "uploads/");
     },
     filename: (req, file, cb) => {
         // Ensure the file extension is .mp4
@@ -53,7 +53,7 @@ router.delete("/:id", auth_middleware_1.authenticateJWT, (req, res) => __awaiter
     const video = yield Video_1.default.findById(req.params.id);
     if (video && video.user.equals(user === null || user === void 0 ? void 0 : user._id)) {
         // Delete video file from uploads folder
-        const filePath = path_1.default.join("./src/uploads", video.filename);
+        const filePath = path_1.default.join("uploads", video.filename);
         fs_1.default.unlink(filePath, (err) => {
             if (err) {
                 console.error("Error deleting file:", err);

@@ -22,7 +22,7 @@ app.use((0, cors_1.default)({
 }));
 mongoose_1.default.connect(config_1.MONGO_URI).then(() => console.log('MongoDB connected'))
     .catch(err => console.error('MongoDB connection error:', err));
-app.use('/uploads', express_1.default.static(path_1.default.join(__dirname, 'uploads')));
+app.use('/uploads', express_1.default.static(path_1.default.join(__dirname, '../uploads')));
 app.use(express_1.default.json());
 app.use((0, express_session_1.default)({
     secret: 'secret',

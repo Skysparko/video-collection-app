@@ -10,7 +10,7 @@ const router = Router();
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "./src/uploads/");
+    cb(null, "uploads/");
   },
   filename: (req, file, cb) => {
     // Ensure the file extension is .mp4
@@ -50,7 +50,7 @@ router.delete("/:id", authenticateJWT, async (req, res) => {
   const video = await Video.findById(req.params.id);
   if (video && video.user.equals(user?._id)) {
     // Delete video file from uploads folder
-    const filePath = path.join("./src/uploads", video.filename);
+    const filePath = path.join("uploads", video.filename);
     fs.unlink(filePath, (err) => {
       if (err) {
         console.error("Error deleting file:", err);
