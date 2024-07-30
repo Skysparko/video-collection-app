@@ -7,12 +7,13 @@ import authRoutes from './routes/auth.routes';
 import videoRoutes from './routes/video.routes';
 import { MONGO_URI } from './config';
 import path from 'path';
-
+import dotnev from "dotenv"
+dotnev.config()
 const app = express();
 
 // CORS configuration
 app.use(cors({
-  origin: 'http://localhost:3000', // Your frontend URL
+  origin: process.env.APP_URL, // Your frontend URL
   credentials: true // Allow cookies and credentials
 }));
 
