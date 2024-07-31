@@ -12,6 +12,7 @@ export const authenticateJWT = async (req: Request, res: Response, next: NextFun
     (req as any).user = await User.findById(decoded.id);
     next();
   } catch (error) {
-    res.sendStatus(403);
+    console.log("error", error);
+    res.status(403).json({ error: (error as Error).message });
   }
 };
